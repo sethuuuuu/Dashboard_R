@@ -1,6 +1,6 @@
-Read me File for Analytical Dashboard on Statewise Arrests for Child Pornography:
+Read me File for Financial Year Revenue Analysis Report
 This dashboard in created using R shiny. 
-Link for dashboard: https://udit1309.shinyapps.io/Staewise_arrests_for_Child_Pornography/
+Link for dashboard: http://127.0.0.1:3680/
 
 Repositry:
 This repositry includes 4 files global.R, UI.R, server.R and Report.pdf.
