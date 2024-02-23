@@ -1,5 +1,5 @@
 # Packages
-install.packages(c("shiny", "shinydashboard", "dplyr", "DT", "readxl", "ggplot2", "plotly", "ggtext", "ggcorrplot", "reshape2"))
+#install.packages(c("shiny", "shinydashboard", "dplyr", "DT", "readxl", "ggplot2", "plotly", "ggtext", "ggcorrplot", "reshape2"))
 #library(shiny)
 library(shinydashboard)
 library(dplyr)
@@ -13,15 +13,14 @@ library(reshape2)
 
 #Global 
 #setwd("E:/RTSM/Dashboard/New folder")
-data = read_excel("data_crime_women.xls")
+data = read_excel("datafile.xls")
 data = data[-29, ]
 data = data[-38, ]
 data = data[-37, ]
 data <- mutate_all(data, funs(ifelse(. == "NA", NA, .)))
 
 #Converting required columns to numeric
-numeric_columns = c("Rape - 2015","Rape - 2016","Assaults (molestation) - 2015","Assaults (molestation) - 2016","Murder (women) - 2015","Murder (women) - 2016",
-                    "2014 - Cases registered","2014 - Total rape Cases","2015 - Cases registered","2016 - Cases registered")  
+numeric_columns = c("Revenue Realization From - Corporation Tax","Revenue Realization From - Income Tax")  
 data = data %>%
   mutate_at(vars(numeric_columns), as.numeric)
 
@@ -38,32 +37,32 @@ data %>%
 
 #Choices for input 
 choices1 = data %>% 
-  select(-'State/UT') %>% 
+  select(-'Financial Year') %>% 
   names()
 
 
 #Assigning statenames
-State = data[["State/UT"]]
+Year = data[["Financial Year"]]
 
 # Anova Tests
-
-#CR
-CR1 = data$`2014 - Cases registered`
-CR2 = data$`2015 - Cases registered`
-CR3 = data$`2016 - Cases registered`
-
-
-arrest_data_CR <- data.frame(
-  State = State,
-  Arrests_2014 = CR1,
-  Arrests_2015 = CR2,
-  Arrests_2016 = CR3
-)
-
-arrest_data_long1 <- melt(arrest_data_CR, id.vars = "State", variable.name = "Year", value.name = "Arrests")
-
-# Fit repeated measures ANOVA
-model_CR <- aov(Arrests ~ Year + Error(State / Year), data = arrest_data_long1)
+# 
+# #CR
+# CR1 = data$`2014 - Cases registered`
+# CR2 = data$`2015 - Cases registered`
+# CR3 = data$`2016 - Cases registered`
+# 
+# 
+# arrest_data_CR <- data.frame(
+#   State = State,
+#   Arrests_2014 = CR1,
+#   Arrests_2015 = CR2,
+#   Arrests_2016 = CR3
+# )
+# 
+# arrest_data_long1 <- melt(arrest_data_CR, id.vars = "State", variable.name = "Year", value.name = "Arrests")
+# 
+# # Fit repeated measures ANOVA
+# model_CR <- aov(Arrests ~ Year + Error(State / Year), data = arrest_data_long1)
 
 
 # #CCS

@@ -2,7 +2,7 @@
 ui <- dashboardPage(
   
   dashboardHeader(
-    title = "Statewise Cases registered for Rape, Assault and Murder of Women",
+    title = "Revenue Realisation from Direct Taxes",
     titleWidth = 650, 
     tags$li(class = "dropdown", tags$a(href = "https://www.linkedin.com/in/sumiran-naman-b5b38339/", icon("linkedin"), "My Profile", target = "_blank")),
     tags$li(class = "dropdown", tags$a(href = "https://github.com/sumiran98/Crime_against_women_dashboard", icon("github"), "Source code and Report", target = "_blank"))
@@ -13,7 +13,7 @@ ui <- dashboardPage(
       menuItem("Dataset", tabName = "data", icon = icon("database")),
       menuItem(text = "Visualization", tabName = "viz", icon = icon("chart-line")),
       menuItem(text = "Analysis", tabName = "anova", icon = icon("chart-line")),
-      selectInput(inputId = "var1", label = "Select the Crime", choices = choices1, selected = "Rape - 2015")
+      selectInput(inputId = "var1", label = "Select the type", choices = choices1, selected = "Revenue Realization From - Corporation Tax")
     )
   ),
   
@@ -27,7 +27,7 @@ ui <- dashboardPage(
                               fluidRow(
                                 column(width = 8,
                                        tags$br() , 
-                                       tags$a("Welcome to the Crime Against Women Dashboard – a comprehensive tool designed to illuminate and analyze incidents of violence against women in India from 2014 to 2016. This dashboard serves as a vital resource for understanding the alarming trends and patterns related to crimes such as rape, murder, and assault. By presenting data-driven insights, we aim to foster awareness and empower individuals, policymakers, and communities to collaboratively address the pressing issue of violence against women. Explore the visualizations and statistics within this dashboard to gain a deeper understanding of the challenges faced, facilitating informed discussions and actions towards a safer and more secure environment for women in India.")),
+                                       tags$a("Welcome to the Revenue Realisation from Direct Taxes Dashboard – This data analysis delves into the revenue realization from direct taxes, focusing on Corporation Tax, Income Tax, and Other Direct Taxes over a specified financial period. By examining the minimum, maximum, average, and median revenue realizations for each tax category, as well as their respective growth rates and share in total direct taxes, this report aims to provide valuable insights into the fiscal landscape. Understanding the patterns and trends in revenue generation is crucial for policymakers and stakeholders to make informed decisions regarding taxation policies, compliance measures, and revenue management strategies. Through this analysis, we seek to uncover key findings that can guide future fiscal planning and optimize tax collection mechanisms for sustainable economic growth.")),
                                 column(width = 4, tags$br() ,
                                        tags$p("Abbrevations used are (CR) Case Registered")
                                 )
@@ -40,7 +40,7 @@ ui <- dashboardPage(
       tabItem(tabName = "viz",
               #tab box
               tabBox(id = "t1", width = 12,
-                     tabPanel("Crime Trends by States",value = "trends", plotlyOutput("bar")),
+                     tabPanel("variation by year",value = "variation", plotlyOutput("bar")),
                      tabPanel("Distribution", value = "distro",plotlyOutput("histplot")))),
       tabItem(tabName = "anova",
               tabBox(id = "t1", width = 12,
@@ -48,7 +48,7 @@ ui <- dashboardPage(
                               fluidRow(
                                 column(width = 8,
                                        tags$br() , 
-                                       tags$a("This part of Dashboard compares different crimes per state over years using test of Anova")),
+                                       tags$a("This part of Dashboard compares revenue realisation from direct taxes using test of Anova")),
                                 column(width = 4, tags$br())
                      
                      )),
